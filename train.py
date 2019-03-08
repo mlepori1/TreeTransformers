@@ -65,10 +65,7 @@ def train_model(model, opt):
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-src_data', required=True)
-    parser.add_argument('-trg_data', required=True)
-    parser.add_argument('-src_lang', required=True)
-    parser.add_argument('-trg_lang', required=True)
+    parser.add_argument('-data', required=True)
     parser.add_argument('-no_cuda', action='store_true')
     parser.add_argument('-SGDR', action='store_true')
     parser.add_argument('-epochs', type=int, default=2)
@@ -84,6 +81,7 @@ def main():
     parser.add_argument('-max_strlen', type=int, default=80)
     parser.add_argument('-floyd', action='store_true')
     parser.add_argument('-checkpoint', type=int, default=0)
+    parser.add_argument('-encoding', type=int, default=0) # Positional encodings: 0 = linear, 1 = tree-based
 
     opt = parser.parse_args()
     
