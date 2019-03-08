@@ -3,7 +3,7 @@ import torchtext
 from torchtext import data
 from Tokenize import tokenize
 from Batch import MyIterator, batch_size_fn
-import ParseData
+from ParseData import parse
 import os
 import dill as pickle
 
@@ -12,7 +12,7 @@ def read_data(opt):
     
     if opt.data is not None:
         try:
-            opt.src_data = open(opt.src_data).read().strip()
+            opt.data = open(opt.src_data).read().strip()
         except:
             print("error: '" + opt.src_data + "' file not found")
             quit()
@@ -20,10 +20,13 @@ def read_data(opt):
 
 # Use parsed data for creating fields
 def create_fields(opt):
-    
-    t_src = tokenize(opt.src_lang)
-    t_trg = tokenize(opt.trg_lang)
 
+
+    parsed_data = parse(opt.data)
+    src = parsed_data[:][1]
+    tgt = parsed_data[:][0]
+
+    # t_trg.tokenizer is a spacy tokenizer function
     TRG = data.Field(lower=True, tokenize=t_trg.tokenizer, init_token='<sos>', eos_token='<eos>')
     SRC = data.Field(lower=True, tokenize=t_src.tokenizer)
 
