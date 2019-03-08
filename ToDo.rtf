@@ -1,0 +1,31 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Things to change\
+=============\
+Fun things to change: \
+\
+Embed.py ~ Change the positional encoding structure\
+translate.py ~ Make this evaluate on listops test set\
+\
+\
+Not fun things to change: \
+\
+Tokenize.py ~ Don\'92t need it\
+Process.py ~ Change read_data, delete create_fields, change create_dataset, provide an option to use either linear or tree position.\
+Beam.py ~ Used to pick out words in vocab for testing, don\'92t need here, just take max of output.\
+train.py ~ Change arguments (delete a few, add -encoding 0/1 for linear, tree), change main method a bit\
+\
+\
+\
+Things to not change\
+================\
+Layers.py ~ Sets up encoder/decoder structure\
+Models.py ~ Sets up transformer\
+Optim.py ~ Sets up the optimizer\
+Sublayers.py ~ Sets up all of the general sublayers in the encoder/decoder\
+Batch.py ~ Pretty sure is fine, might have some specific thing that is impacted by the dataset}
